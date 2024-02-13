@@ -1,0 +1,32 @@
+# This is a comment explaining what the following section does
+
+# Set the server's default behavior
+server {
+    # Listen on port 80 for HTTP requests
+    listen 80;
+
+    # Define the server's domain name
+    server_name example.com;
+
+    # Define the root directory for serving files
+    root /var/www/html;
+
+    # Define default file to serve
+    index index.html;
+
+    # Configure error pages
+    error_page 404 /404.html;
+
+    # Define location of static files
+    location /static/ {
+        alias /var/www/static/;
+    }
+
+    # Define location of dynamic application
+    location / {
+        proxy_pass http://localhost:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
