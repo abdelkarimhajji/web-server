@@ -1,16 +1,11 @@
 # This is a comment explaining what the following section does
 
 # Set the server's default behavior
-
-
-
-    
-
-
                 
-server {
+    server{
     # Listen on port 80 for HTTP requests
     listen 80;
+    listen 90;
 
     # Define the server's domain name
     server_name example.com;
