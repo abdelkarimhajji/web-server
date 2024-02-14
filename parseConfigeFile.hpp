@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parseConfigeFile.cpp                               :+:      :+:    :+:   */
+/*   parseConfigeFile.hpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:41:14 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/13 20:41:33 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/14 14:20:14 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,9 @@
 
 class parseConfigeFile
 {
-        
+    private:
+        std::vector<std::string>     split(std::string str);
+        void    checkValidServer();
+    public:
+        void    parser(std::string nameFile);
 };
