@@ -6,11 +6,16 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/14 14:19:54 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/14 15:19:53 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parseConfigeFile.hpp"
+
+void    parseConfigeFile::checkValidServer(std::vector<std::string> splitVector)
+{
+    
+}
 
 std::vector<std::string>     parseConfigeFile::split(std::string str)
 {
@@ -49,8 +54,7 @@ void    parseConfigeFile::parser(std::string nameFile)
             {
                 std::cout << splitVector[0] << std::endl;
                 std::cout << splitVector[1] << std::endl;
-                checkValidServer();
-                // std::cout << "hello\n";
+                checkValidServer(splitVector);
             }
             i++;
         }
