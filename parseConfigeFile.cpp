@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 10:40:24 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 11:01:10 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void    ParseConfigeFile::errorParse()
 ParseConfigeFile::ParseConfigeFile()
 {
     this->findBraciteRight = 0;
+    this->findBraciteLeft = 0;
 }
 
 std::vector<std::string>     ParseConfigeFile::split(std::string str)
@@ -52,7 +53,13 @@ void    ParseConfigeFile::checkValidServer(std::vector<std::string> splitVector)
 
 void    ParseConfigeFile::checkValidListen(std::vector<std::string> splitVector)
 {
-    std::cout << "hi";
+    if(splitVector.size() == 2)
+    {
+        
+    }
+    else
+        errorParse();
+        
 }
 
 void    ParseConfigeFile::parser(std::string nameFile)

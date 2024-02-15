@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parseConfigeFile.hpp                               :+:      :+:    :+:   */
+/*   DataConfige.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/13 20:41:14 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 10:46:05 by ahajji           ###   ########.fr       */
+/*   Created: 2024/02/15 10:42:31 by ahajji            #+#    #+#             */
+/*   Updated: 2024/02/15 10:49:09 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE
-#define PARSE
+
+#ifndef DATA
+#define DATA
 
 #include <iostream>
 #include <vector>
@@ -19,18 +20,10 @@
 #include <string>
 #include <sstream>
 
-class ParseConfigeFile
+class DataConfige
 {
     private:
-        int findBraciteRight;
-        int findBraciteLeft;
-        std::vector<std::string>     split(std::string str);
-        void    checkValidServer(std::vector<std::string> splitVector);
-        void    checkValidListen(std::vector<std::string> splitVector);
-        void    errorParse();
-    public:
-        ParseConfigeFile();
-        void    parser(std::string nameFile);
+        
 };
 
 #endif
