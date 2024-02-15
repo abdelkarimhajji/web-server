@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:11:43 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 14:02:20 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 15:28:44 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,21 @@ std::string    DataConfige::getIndex()
 {
     return this->index;
 }
+
 void    DataConfige::setIndex(std::string index)
 {
     this->index = index;
+}
+
+std::vector<EroorPage> DataConfige::getErrorPage()
+{
+    return this->errorPage;
+}
+
+void    DataConfige::setErrorPage(std::string error, std::string page)
+{
+    EroorPage newErrorPage;
+    newErrorPage.error = error;
+    newErrorPage.page = page;
+    this->errorPage.push_back(newErrorPage);
 }

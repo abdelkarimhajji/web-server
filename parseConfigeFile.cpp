@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 14:03:11 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 15:21:54 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,15 @@ void    ParseConfigeFile::checkValidIndex(std::vector<std::string> splitVector)
     else
         errorParse();
 }
+void    ParseConfigeFile::checkValidErrorPage(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 3)
+    {
+        this->data.back().setErrorPage(splitVector[1], splitVector[2]);
+    }
+    else
+        errorParse();
+}
 
 void    ParseConfigeFile::parser(std::string nameFile)
 {
@@ -133,6 +142,8 @@ void    ParseConfigeFile::parser(std::string nameFile)
                         checkValidRoot(splitVector);
                     else if(splitVector[0] == "index" && this->findBraciteRight >= 1)
                         checkValidIndex(splitVector);
+                    else if(splitVector[0] == "error_page" && this->findBraciteRight >= 1)
+                        checkValidErrorPage(splitVector);
                 }
                 i++;
             }
