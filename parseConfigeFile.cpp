@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 12:27:47 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 13:58:43 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,31 @@ void    ParseConfigeFile::checkValidListen(std::vector<std::string> splitVector)
         errorParse();
         
 }
+void    ParseConfigeFile::checkValidServerName(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 2)
+    {
+        this->data.back().setServerName(splitVector[1]);
+    }
+    else
+        errorParse();
+}
+
+void    ParseConfigeFile::checkValidRoot(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 2)
+    {
+        this->data.back().setRoot(splitVector[1]);
+    }
+}
+
+void    ParseConfigeFile::checkValidIndex(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 2)
+    {
+        this->data.back().setRoot(splitVector[1]);
+    }
+}
 
 void    ParseConfigeFile::parser(std::string nameFile)
 {
@@ -98,9 +123,17 @@ void    ParseConfigeFile::parser(std::string nameFile)
                         checkValidServer(splitVector);
                     else if(splitVector[0] == "listen" && this->findBraciteRight >= 1)
                         checkValidListen(splitVector);
+                    else if(splitVector[0] == "server_name" && this->findBraciteRight >= 1)
+                        checkValidServerName(splitVector);
+                    else if(splitVector[0] == "root" && this->findBraciteRight >= 1)
+                        checkValidRoot(splitVector);
+                    else if(splitVector[0] == "index" && this->findBraciteRight >= 1)
+                        checkValidIndex(splitVector);
                 }
                 i++;
             }
+            std::cout << data[0].getRoot() << std::endl;
+            // std::cout << data[1].getListen()[1] << std::endl;
             exit(0);
         }
     }

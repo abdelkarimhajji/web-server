@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:41:14 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 11:44:34 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 13:58:03 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ class ParseConfigeFile
         std::vector<std::string>     split(std::string str);
         void    checkValidServer(std::vector<std::string> splitVector);
         void    checkValidListen(std::vector<std::string> splitVector);
+        void    checkValidServerName(std::vector<std::string> splitVector);
+        void    checkValidRoot(std::vector<std::string> splitVector);
+        void    checkValidIndex(std::vector<std::string> splitVector);
         void    errorParse();
     public:
         ParseConfigeFile();
