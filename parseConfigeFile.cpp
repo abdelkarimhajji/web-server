@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/14 19:59:17 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 10:26:41 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void    parseConfigeFile::parser(std::string nameFile)
                 {
                     if(splitVector[0] == "server")
                         checkValidServer(splitVector);
-                    else if(splitVector == "")
+                    else if(splitVector[0] == "listen" && this->findBraciteRight >= 1)
+                        checkValidListen(splitVector);
                 }
                 i++;
             }
