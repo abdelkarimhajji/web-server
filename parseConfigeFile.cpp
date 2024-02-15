@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 15:21:54 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 15:33:25 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,8 @@ void    ParseConfigeFile::parser(std::string nameFile)
                 }
                 i++;
             }
-            std::cout << data[0].getRoot() << std::endl;
+            std::cout << data[0].getErrorPage()[0].error << std::endl;
+            std::cout << data[0].getErrorPage()[0].page << std::endl;
             // std::cout << data[1].getListen()[1] << std::endl;
             exit(0);
         }
