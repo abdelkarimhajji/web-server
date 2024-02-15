@@ -2,17 +2,20 @@
 
 # Set the server's default behavior
                 
-    server{
+server
+{
     # Listen on port 80 for HTTP requests
     listen 55 
     listen 90
 
     # Define the server's domain name
     server_name example.com
+    HOST 8.8.8.8
 
     # Define the root directory for serving files
     root /var/www/html
 
+    autoindex on 
     # Define default file to serve
     index index.html
 
@@ -22,6 +25,17 @@
     # Define location of static files
     location /static/ {
         alias /var/www/static/
+        root /var/www/static/
+        index statuc.html
+        methods GET POST
+        autoindex 
+        cgi_extention   .py
+        cgi_bin         
+        return 303 /path/to/blala
+        
+
+
+
     }
 
     # Define location of dynamic application
