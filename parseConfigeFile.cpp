@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 11:01:10 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 11:31:33 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ std::vector<std::string>     ParseConfigeFile::split(std::string str)
 
 void    ParseConfigeFile::checkValidServer(std::vector<std::string> splitVector)
 {
-    if ((splitVector[0] == "server" && splitVector[1] == "{" && splitVector.size() == 2)
-        || (splitVector[0] == "server{" && splitVector.size() == 1))
+    if ((splitVector[1] == "{" && splitVector.size() == 2)
+        || (splitVector.size() == 1))
     {
         if(splitVector[1] == "{" || splitVector[0][6] == '{')
             this->findBraciteRight++;
@@ -53,8 +53,15 @@ void    ParseConfigeFile::checkValidServer(std::vector<std::string> splitVector)
 
 void    ParseConfigeFile::checkValidListen(std::vector<std::string> splitVector)
 {
+    int i = 0;
     if(splitVector.size() == 2)
     {
+        while(i < splitVector[1].size())
+        {
+            if(!std::isdigit(splitVector[1][i]))
+                errorParse();
+            i++;
+        }
         
     }
     else
@@ -77,7 +84,7 @@ void    ParseConfigeFile::parser(std::string nameFile)
         {
             myVector_s.push_back(line);
         }
-        std::cout << myVector_s.back() << std::endl;
+        // std::cout << myVector_s.back() << std::endl;
         while (true)
         {
             i = 0;
@@ -86,7 +93,7 @@ void    ParseConfigeFile::parser(std::string nameFile)
                 splitVector = split(myVector_s[i]);
                 if(!splitVector.empty() && splitVector[0] != "#" && splitVector[0][0] != '#')
                 {
-                    if(splitVector[0] == "server")
+                    if(splitVector[0] == "server" || splitVector[0] == "server{")
                         checkValidServer(splitVector);
                     else if(splitVector[0] == "listen" && this->findBraciteRight >= 1)
                         checkValidListen(splitVector);

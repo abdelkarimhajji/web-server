@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 10:42:31 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 10:49:09 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 11:32:27 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 class DataConfige
 {
     private:
-        
+        std::vector<std::string> listen;
 };
 
 #endif

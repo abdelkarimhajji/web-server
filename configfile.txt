@@ -4,7 +4,7 @@
                 
     server{
     # Listen on port 80 for HTTP requests
-    listen 80
+    listen     55 
     listen 90
 
     # Define the server's domain name
