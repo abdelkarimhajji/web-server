@@ -6,17 +6,17 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:10:08 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/14 14:11:07 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 10:36:32 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parseConfigeFile.hpp"
+#include "ParseConfigeFile.hpp"
 
 
 
 int main(void)
 {
-    parseConfigeFile parse;
+    ParseConfigeFile parse;
 
     parse.parser("configfile.txt");
 

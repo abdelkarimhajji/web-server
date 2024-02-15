@@ -6,23 +6,23 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 10:26:41 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 10:40:24 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parseConfigeFile.hpp"
+#include "ParseConfigeFile.hpp"
 
-void    parseConfigeFile::errorParse()
+void    ParseConfigeFile::errorParse()
 {
     std::cout << "error in parse" << std::endl;
 }
 
-parseConfigeFile::parseConfigeFile()
+ParseConfigeFile::ParseConfigeFile()
 {
     this->findBraciteRight = 0;
 }
 
-std::vector<std::string>     parseConfigeFile::split(std::string str)
+std::vector<std::string>     ParseConfigeFile::split(std::string str)
 {
     std::vector<std::string> allElments;
     std::string part, part2;
@@ -38,7 +38,7 @@ std::vector<std::string>     parseConfigeFile::split(std::string str)
     return allElments;
 }
 
-void    parseConfigeFile::checkValidServer(std::vector<std::string> splitVector)
+void    ParseConfigeFile::checkValidServer(std::vector<std::string> splitVector)
 {
     if ((splitVector[0] == "server" && splitVector[1] == "{" && splitVector.size() == 2)
         || (splitVector[0] == "server{" && splitVector.size() == 1))
@@ -50,7 +50,12 @@ void    parseConfigeFile::checkValidServer(std::vector<std::string> splitVector)
         errorParse();
 }
 
-void    parseConfigeFile::parser(std::string nameFile)
+void    ParseConfigeFile::checkValidListen(std::vector<std::string> splitVector)
+{
+    std::cout << "hi";
+}
+
+void    ParseConfigeFile::parser(std::string nameFile)
 {
     int i = 0;
     int j = 0;

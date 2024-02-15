@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:41:14 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 10:27:53 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 10:36:53 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <string>
 #include <sstream>
 
-class parseConfigeFile
+class ParseConfigeFile
 {
     private:
         int findBraciteRight;
@@ -26,6 +26,6 @@ class parseConfigeFile
         void    checkValidListen(std::vector<std::string> splitVector);
         void    errorParse();
     public:
-        parseConfigeFile();
+        ParseConfigeFile();
         void    parser(std::string nameFile);
 };
