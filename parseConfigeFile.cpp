@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 11:31:33 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/15 12:02:22 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ void    ParseConfigeFile::checkValidServer(std::vector<std::string> splitVector)
     if ((splitVector[1] == "{" && splitVector.size() == 2)
         || (splitVector.size() == 1))
     {
-        if(splitVector[1] == "{" || splitVector[0][6] == '{')
             this->findBraciteRight++;
+            DataConfige newConfig;
+            data.push_back(newConfig);
     }
     else
         errorParse();
@@ -100,7 +101,6 @@ void    ParseConfigeFile::parser(std::string nameFile)
                 }
                 i++;
             }
-            
             exit(0);
         }
     }
