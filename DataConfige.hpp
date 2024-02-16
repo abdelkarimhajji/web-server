@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DataConfige.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 10:42:31 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 15:23:29 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/16 15:35:56 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,23 @@ struct EroorPage
     std::string error;
     std::string page;
 };
+struct Return
+{
+    std::string error;
+    std::string path;
+};
+struct Location
+{
+    std::string alias;
+    std::string root;
+    std::string index;
+    std::string methods;
+    std::string autoindex;
+    std::string cgiExtension;
+    std::string cgiBin;
+    Return _return;
+    
+};
 
 class DataConfige
 {
@@ -34,6 +51,7 @@ class DataConfige
         std::string root;
         std::string index;
         std::vector<EroorPage> errorPage;
+        std::vector<Location> location;
     public:
         std::vector<std::string>    getListen();
         void    setListen(std::string listen);
