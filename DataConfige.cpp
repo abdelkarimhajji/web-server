@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:11:43 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 15:28:44 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/16 16:51:27 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,9 @@ void    DataConfige::setErrorPage(std::string error, std::string page)
     newErrorPage.error = error;
     newErrorPage.page = page;
     this->errorPage.push_back(newErrorPage);
+}
+
+std::vector<Location>    DataConfige::getLocation()
+{
+    return this->location;
 }
