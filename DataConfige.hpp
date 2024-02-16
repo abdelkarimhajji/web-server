@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 10:42:31 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/16 15:35:56 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/16 15:49:06 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ class DataConfige
         void    setIndex(std::string index);
         std::vector<EroorPage>    getErrorPage();
         void    setErrorPage(std::string error, std::string page);
+        std::vector<Location>    getLocation();
+        // void    setLocation(std::string error, std::string page);
 };
 
 #endif

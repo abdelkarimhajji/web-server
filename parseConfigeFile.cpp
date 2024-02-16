@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parseConfigeFile.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 20:44:16 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/16 15:47:38 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,17 @@ void    ParseConfigeFile::checkValidErrorPage(std::vector<std::string> splitVect
         errorParse();
 }
 
+void    ParseConfigeFile::checkValidLocation(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 3)
+    {
+        this->data.back().setErrorPage(splitVector[1], splitVector[2]);
+    }
+    else
+        errorParse();
+
+}
+
 void    ParseConfigeFile::parser(std::string nameFile)
 {
     int i = 0;
@@ -132,7 +143,8 @@ void    ParseConfigeFile::parser(std::string nameFile)
                 splitVector = split(myVector_s[i]);
                 if(!splitVector.empty() && splitVector[0] != "#" && splitVector[0][0] != '#')
                 {
-                    if(splitVector[0] == "server" || splitVector[0] == "server{")
+                    if((splitVector[0] == "server" || splitVector[0] == "server{") 
+                        && this->findBraciteRight == 0)
                         checkValidServer(splitVector);
                     else if(splitVector[0] == "listen" && this->findBraciteRight >= 1)
                         checkValidListen(splitVector);
@@ -144,6 +156,8 @@ void    ParseConfigeFile::parser(std::string nameFile)
                         checkValidIndex(splitVector);
                     else if(splitVector[0] == "error_page" && this->findBraciteRight >= 1)
                         checkValidErrorPage(splitVector);
+                    else if(splitVector[0] == "location" && this->findBraciteRight >= 1)
+                        checkValidLocation(splitVector);
                 }
                 i++;
             }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parseConfigeFile.hpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:41:14 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 14:04:43 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/16 15:46:46 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class ParseConfigeFile
         void    checkValidRoot(std::vector<std::string> splitVector);
         void    checkValidIndex(std::vector<std::string> splitVector);
         void    checkValidErrorPage(std::vector<std::string> splitVector);
+        void    checkValidLocation(std::vector<std::string> splitVector);
         void    errorParse();
     public:
         ParseConfigeFile();
