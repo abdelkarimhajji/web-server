@@ -27,10 +27,10 @@ server
         alias /var/www/static/
         root /var/www/static/
         index statuc.html
-        methods GET POST
+        methods 
         autoindex on
         cgi_extention   .py
-        cgi_bin         
+        cgi_bin    ff     
         return 303 /path/to/blala
         
 

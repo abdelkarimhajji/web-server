@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/17 13:18:27 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/17 13:42:18 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,29 @@ void    ParseConfigeFile::checkValidLocationAutoIndex(std::vector<std::string> s
         errorParse();
 }
 
+void    ParseConfigeFile::checkValidLocationCgiExtention(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 2)
+        this->data.back().setLocationCgiExtention(splitVector[1]);
+    else
+        errorParse();
+}
+void    ParseConfigeFile::checkValidLocationCgiBin(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 2)
+        this->data.back().setLocationCgiBin(splitVector[1]);
+    else
+        errorParse();
+}
+
+void    ParseConfigeFile::checkValidLocationReturn(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 2)
+        this->data.back().setLocationCgiBin(splitVector[1]);
+    else
+        errorParse();
+}
+
 void    ParseConfigeFile::parser(std::string nameFile)
 {
     int i = 0;
@@ -263,6 +286,12 @@ void    ParseConfigeFile::parser(std::string nameFile)
                     else if(splitVector[0] == "autoindex" && this->findBraciteRight == 1
                         && this->findBraciteRightLocation == 1)
                         checkValidLocationAutoIndex(splitVector);
+                    else if(splitVector[0] == "cgi_extention" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 1)
+                        checkValidLocationCgiExtention(splitVector);
+                    else if(splitVector[0] == "cgi_bin" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 1)
+                        checkValidLocationCgiBin(splitVector);
                 }
                 i++;
             }

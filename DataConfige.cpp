@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:11:43 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/17 13:15:19 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/17 13:46:55 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void    DataConfige::setLocationMethods(std::string method1, std::string method2
         this->vectorLocation.back().methods.post = 1;
     else if(!method1.empty() && method1 == "DELETE")
         this->vectorLocation.back().methods._delete = 1;
-    else if(!method3.empty())
+    else if(!method1.empty())
         errorData();
     if(!method2.empty() && method2 == "GET")
         this->vectorLocation.back().methods.get = 1;
@@ -115,7 +115,7 @@ void    DataConfige::setLocationMethods(std::string method1, std::string method2
         this->vectorLocation.back().methods.post = 1;
     else if(!method2.empty() && method2 == "DELETE")
         this->vectorLocation.back().methods._delete = 1;
-    else if(!method3.empty())
+    else if(!method2.empty())
         errorData();
     if(!method3.empty() && method3 == "GET")
         this->vectorLocation.back().methods.get = 1;
@@ -135,4 +135,20 @@ void    DataConfige::setLocationAutoIndex(std::string autoIndex)
         this->vectorLocation.back().autoIndex = 1;
     else
         errorData();
+}
+
+void    DataConfige::setLocationCgiExtention(std::string cgiExtention)
+{
+    this->vectorLocation.back().cgiExtension = cgiExtention;
+}
+
+void    DataConfige::setLocationCgiBin(std::string cgiBin)
+{
+    this->vectorLocation.back().cgiBin = cgiBin;
+}
+
+void    DataConfige::setLocationReturn(std::string returnStatus, std::string returnPath)
+{
+    this->vectorLocation.back()._return.status = returnStatus;
+    this->vectorLocation.back()._return.status = returnPath;
 }

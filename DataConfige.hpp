@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 10:42:31 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/17 13:16:14 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/17 13:46:05 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ struct EroorPage
 };
 struct Return
 {
-    std::string error;
+    std::string status;
     std::string path;
 };
 
@@ -91,6 +91,9 @@ class DataConfige
         void    setLocationIndex(std::string index);
         void    setLocationMethods(std::string method1, std::string method2, std::string method3);
         void    setLocationAutoIndex(std::string autoIndex);
+        void    setLocationCgiExtention(std::string cgiExtention);
+        void    setLocationCgiBin(std::string cgiBin);
+        void    setLocationReturn(std::string returnStatus, std::string returnPath);
         void    errorData();
 };
 

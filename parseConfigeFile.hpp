@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:41:14 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/17 13:04:12 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/17 13:42:35 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ class ParseConfigeFile
         void    checkValidLocationIndex(std::vector<std::string> splitVector);
         void    checkValidLocationMethods(std::vector<std::string> splitVector);
         void    checkValidLocationAutoIndex(std::vector<std::string> splitVector);
+        void    checkValidLocationCgiExtention(std::vector<std::string> splitVector);
+        void    checkValidLocationCgiBin(std::vector<std::string> splitVector);
+        void    checkValidLocationReturn(std::vector<std::string> splitVector);
         void    errorParse();
     public:
         ParseConfigeFile();
