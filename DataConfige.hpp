@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 10:42:31 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/17 11:26:33 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/17 13:16:14 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,36 @@ struct Return
     std::string error;
     std::string path;
 };
+
+struct Methods
+{
+    int get;
+    int post;
+    int _delete;
+
+    Methods()
+    {
+        get = 0;
+        post = 0;
+        _delete = 0;
+    }
+};
 struct Location
 {
     std::string location;
     std::string alias;
     std::string root;
     std::string index;
-    std::string methods;
-    std::string autoindex;
+    Methods methods;
+    int autoIndex;
     std::string cgiExtension;
     std::string cgiBin;
     Return _return;
     
+    Location()
+    {
+        autoIndex = 1;
+    }
 };
 
 class DataConfige
@@ -53,7 +71,9 @@ class DataConfige
         std::string index;
         std::vector<EroorPage> errorPage;
         std::vector<Location> vectorLocation;
+
     public:
+        DataConfige();
         std::vector<std::string>    getListen();
         void    setListen(std::string listen);
         std::vector<std::string>    getServerName();
@@ -68,6 +88,10 @@ class DataConfige
         void    setLocation(std::string _location);
         void    setLocationRoot(std::string root);
         void    setLocationAlias(std::string alias);
+        void    setLocationIndex(std::string index);
+        void    setLocationMethods(std::string method1, std::string method2, std::string method3);
+        void    setLocationAutoIndex(std::string autoIndex);
+        void    errorData();
 };
 
 #endif

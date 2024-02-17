@@ -28,7 +28,7 @@ server
         root /var/www/static/
         index statuc.html
         methods GET POST
-        autoindex 
+        autoindex on
         cgi_extention   .py
         cgi_bin         
         return 303 /path/to/blala
