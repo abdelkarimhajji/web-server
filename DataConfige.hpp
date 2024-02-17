@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 10:42:31 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/16 16:51:32 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/17 11:26:33 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ struct Return
 };
 struct Location
 {
+    std::string location;
     std::string alias;
     std::string root;
     std::string index;
@@ -51,7 +52,7 @@ class DataConfige
         std::string root;
         std::string index;
         std::vector<EroorPage> errorPage;
-        std::vector<Location> location;
+        std::vector<Location> vectorLocation;
     public:
         std::vector<std::string>    getListen();
         void    setListen(std::string listen);
@@ -64,7 +65,9 @@ class DataConfige
         std::vector<EroorPage>    getErrorPage();
         void    setErrorPage(std::string error, std::string page);
         std::vector<Location>    getLocation();
-        // void    setLocation(std::string error, std::string page);
+        void    setLocation(std::string _location);
+        void    setLocationRoot(std::string root);
+        void    setLocationAlias(std::string alias);
 };
 
 #endif

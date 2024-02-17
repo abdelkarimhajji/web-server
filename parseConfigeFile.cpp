@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parseConfigeFile.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/16 15:47:38 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/17 11:29:51 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ ParseConfigeFile::ParseConfigeFile()
 {
     this->findBraciteRight = 0;
     this->findBraciteLeft = 0;
+    this->findBraciteRightLocation = 0;
+    this->findBraciteLeftLocation = 0;
 }
 
 std::vector<std::string>     ParseConfigeFile::split(std::string str)
@@ -110,13 +112,38 @@ void    ParseConfigeFile::checkValidErrorPage(std::vector<std::string> splitVect
 
 void    ParseConfigeFile::checkValidLocation(std::vector<std::string> splitVector)
 {
-    if(splitVector.size() == 3)
+    if(splitVector.size() == 3 && splitVector[2] == "{")
     {
-        this->data.back().setErrorPage(splitVector[1], splitVector[2]);
+        this->data.back().setLocation(splitVector[1]);
+        this->findBraciteRightLocation = 1;
     }
     else
         errorParse();
 
+}
+void    ParseConfigeFile::checkValidLocationRoot(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 2)
+    {
+        this->data.back().setLocationRoot(splitVector[1]);
+    }
+    else
+        errorParse();
+}
+
+void    ParseConfigeFile::checkValidLocationAlias(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 2)
+    {
+        this->data.back().setLocationAlias(splitVector[1]);
+    }
+    else
+        errorParse();
+}
+
+void    checkValidLocationIndex(std::vector<std::string> splitVector)
+{
+    
 }
 
 void    ParseConfigeFile::parser(std::string nameFile)
@@ -144,20 +171,35 @@ void    ParseConfigeFile::parser(std::string nameFile)
                 if(!splitVector.empty() && splitVector[0] != "#" && splitVector[0][0] != '#')
                 {
                     if((splitVector[0] == "server" || splitVector[0] == "server{") 
-                        && this->findBraciteRight == 0)
+                        && this->findBraciteRight == 0 && this->findBraciteLeft == 0)
                         checkValidServer(splitVector);
-                    else if(splitVector[0] == "listen" && this->findBraciteRight >= 1)
+                    else if(splitVector[0] == "listen" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 0)
                         checkValidListen(splitVector);
-                    else if(splitVector[0] == "server_name" && this->findBraciteRight >= 1)
+                    else if(splitVector[0] == "server_name" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 0)
                         checkValidServerName(splitVector);
-                    else if(splitVector[0] == "root" && this->findBraciteRight >= 1)
+                    else if(splitVector[0] == "root" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 0)
                         checkValidRoot(splitVector);
-                    else if(splitVector[0] == "index" && this->findBraciteRight >= 1)
+                    else if(splitVector[0] == "index" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 0)
                         checkValidIndex(splitVector);
-                    else if(splitVector[0] == "error_page" && this->findBraciteRight >= 1)
+                    else if(splitVector[0] == "error_page" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 0)
                         checkValidErrorPage(splitVector);
-                    else if(splitVector[0] == "location" && this->findBraciteRight >= 1)
+                    else if(splitVector[0] == "location" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 0)
                         checkValidLocation(splitVector);
+                    else if(splitVector[0] == "root" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 1)
+                        checkValidLocationRoot(splitVector);
+                    else if(splitVector[0] == "alias" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 1)
+                        checkValidLocationAlias(splitVector);
+                    else if(splitVector[0] == "index" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 1)
+                        checkValidLocationIndex(splitVector);
                 }
                 i++;
             }
