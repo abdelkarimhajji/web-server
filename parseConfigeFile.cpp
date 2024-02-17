@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/17 13:42:18 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/17 15:18:28 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,15 @@ void    ParseConfigeFile::checkValidLocationReturn(std::vector<std::string> spli
         errorParse();
 }
 
+void    ParseConfigeFile::checkValidLocationLeftBrackite(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 1)
+    {
+        this->findBraciteLeftLocation = 1;
+        this->findBraciteRightLocation = 0;
+    }
+}
+
 void    ParseConfigeFile::parser(std::string nameFile)
 {
     int i = 0;
@@ -250,6 +259,9 @@ void    ParseConfigeFile::parser(std::string nameFile)
                 splitVector = split(myVector_s[i]);
                 if(!splitVector.empty() && splitVector[0] != "#" && splitVector[0][0] != '#')
                 {
+                    if(this->findBraciteRightLocation == 0)
+                    {
+                    
                     if((splitVector[0] == "server" || splitVector[0] == "server{") 
                         && this->findBraciteRight == 0 && this->findBraciteLeft == 0)
                         checkValidServer(splitVector);
@@ -271,7 +283,12 @@ void    ParseConfigeFile::parser(std::string nameFile)
                     else if(splitVector[0] == "location" && this->findBraciteRight == 1
                         && this->findBraciteRightLocation == 0)
                         checkValidLocation(splitVector);
-                    else if(splitVector[0] == "root" && this->findBraciteRight == 1
+                    // else
+                    //     errorParse();
+                    }
+                    else
+                    {
+                        if(splitVector[0] == "root" && this->findBraciteRight == 1
                         && this->findBraciteRightLocation == 1)
                         checkValidLocationRoot(splitVector);
                     else if(splitVector[0] == "alias" && this->findBraciteRight == 1
@@ -292,6 +309,13 @@ void    ParseConfigeFile::parser(std::string nameFile)
                     else if(splitVector[0] == "cgi_bin" && this->findBraciteRight == 1
                         && this->findBraciteRightLocation == 1)
                         checkValidLocationCgiBin(splitVector);
+                    else if(splitVector[0] == "}" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 1)
+                        checkValidLocationLeftBrackite(splitVector);
+                    // else
+                    //     errorParse();
+                    }
+                    
                 }
                 i++;
             }
