@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/17 15:18:28 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/17 15:47:29 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void    ParseConfigeFile::errorParse()
 {
     std::cout << "error in parse" << std::endl;
+    exit(1);
 }
 
 ParseConfigeFile::ParseConfigeFile()
@@ -52,8 +53,8 @@ void    ParseConfigeFile::checkValidServer(std::vector<std::string> splitVector)
     }
     else
     {
-        errorParse();
         std::cout << "i check server" << std::endl;
+        errorParse();
     }
 }
 
@@ -72,8 +73,8 @@ void    ParseConfigeFile::checkValidListen(std::vector<std::string> splitVector)
     }
     else
     {
-        errorParse();
         std::cout << "i check listen" << std::endl;
+        errorParse();
     }
         
 }
@@ -85,8 +86,8 @@ void    ParseConfigeFile::checkValidServerName(std::vector<std::string> splitVec
     }
     else
     {
-        errorParse();
         std::cout << "i check servername" << std::endl;
+        errorParse();
     }
 }
 
@@ -98,8 +99,8 @@ void    ParseConfigeFile::checkValidRoot(std::vector<std::string> splitVector)
     }
     else
     {
-        errorParse();
         std::cout << "i check root" << std::endl;
+        errorParse();
     }
 }
 
@@ -110,7 +111,10 @@ void    ParseConfigeFile::checkValidIndex(std::vector<std::string> splitVector)
         this->data.back().setRoot(splitVector[1]);
     }
     else
+    {
+        std::cout << "i error validIndex" << std::endl;
         errorParse();
+    }
 }
 void    ParseConfigeFile::checkValidErrorPage(std::vector<std::string> splitVector)
 {
@@ -120,8 +124,8 @@ void    ParseConfigeFile::checkValidErrorPage(std::vector<std::string> splitVect
     }
     else
     {
-        errorParse();
         std::cout << "i error page" << std::endl;
+        errorParse();
     }
 }
 
@@ -134,8 +138,8 @@ void    ParseConfigeFile::checkValidLocation(std::vector<std::string> splitVecto
     }
     else
     {
-        errorParse();
         std::cout << "location" << std::endl;
+        errorParse();
     }
 
 }
@@ -147,8 +151,8 @@ void    ParseConfigeFile::checkValidLocationRoot(std::vector<std::string> splitV
     }
     else
     {
-        errorParse();
         std::cout << "i check location root" << std::endl;
+        errorParse();
     }
 }
 
@@ -160,8 +164,8 @@ void    ParseConfigeFile::checkValidLocationAlias(std::vector<std::string> split
     }
     else
     {
-        errorParse();
         std::cout << "i check location alias" << std::endl;
+        errorParse();
     }
 }
 
@@ -173,8 +177,8 @@ void    ParseConfigeFile::checkValidLocationIndex(std::vector<std::string> split
     }
     else
     {
-        errorParse();
         std::cout << "i check location index" << std::endl;
+        errorParse();
     }
 }
 
@@ -191,8 +195,8 @@ void    ParseConfigeFile::checkValidLocationMethods(std::vector<std::string> spl
     }
     else
     {
-        errorParse();
         std::cout << "i check loaction methods" << std::endl;
+        errorParse();
     }
 }
 void    ParseConfigeFile::checkValidLocationAutoIndex(std::vector<std::string> splitVector)
@@ -200,7 +204,10 @@ void    ParseConfigeFile::checkValidLocationAutoIndex(std::vector<std::string> s
     if(splitVector.size() == 2)
         this->data.back().setLocationAutoIndex(splitVector[1]);
     else
+    {
+        std::cout << "i check autoInedx" << std::endl;
         errorParse();
+    }
 }
 
 void    ParseConfigeFile::checkValidLocationCgiExtention(std::vector<std::string> splitVector)
@@ -208,22 +215,31 @@ void    ParseConfigeFile::checkValidLocationCgiExtention(std::vector<std::string
     if(splitVector.size() == 2)
         this->data.back().setLocationCgiExtention(splitVector[1]);
     else
+    {
+        std::cout << "i check cgiextention" << std::endl;
         errorParse();
+    }
 }
 void    ParseConfigeFile::checkValidLocationCgiBin(std::vector<std::string> splitVector)
 {
     if(splitVector.size() == 2)
         this->data.back().setLocationCgiBin(splitVector[1]);
     else
+    {
+        std::cout << "i check cgiBIn" << std::endl;
         errorParse();
+    }
 }
 
 void    ParseConfigeFile::checkValidLocationReturn(std::vector<std::string> splitVector)
 {
-    if(splitVector.size() == 2)
-        this->data.back().setLocationCgiBin(splitVector[1]);
+    if(splitVector.size() == 3)
+        this->data.back().setLocationReturn(splitVector[1], splitVector[2]);
     else
+    {
+        std::cout << "i check return " << std::endl;
         errorParse();
+    }
 }
 
 void    ParseConfigeFile::checkValidLocationLeftBrackite(std::vector<std::string> splitVector)
@@ -233,6 +249,19 @@ void    ParseConfigeFile::checkValidLocationLeftBrackite(std::vector<std::string
         this->findBraciteLeftLocation = 1;
         this->findBraciteRightLocation = 0;
     }
+    else
+        errorParse();
+}
+
+void    ParseConfigeFile::checkValidServerLeftBrackite(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 1)
+    {
+        this->findBraciteRight = 0;
+        this->findBraciteLeft = 1;
+    }
+    else
+        errorParse();
 }
 
 void    ParseConfigeFile::parser(std::string nameFile)
@@ -259,10 +288,10 @@ void    ParseConfigeFile::parser(std::string nameFile)
                 splitVector = split(myVector_s[i]);
                 if(!splitVector.empty() && splitVector[0] != "#" && splitVector[0][0] != '#')
                 {
-                    if(this->findBraciteRightLocation == 0)
-                    {
+                    // if(this->findBraciteRightLocation == 0)
+                    // {
                     
-                    if((splitVector[0] == "server" || splitVector[0] == "server{") 
+                    if((splitVector[0] == "server" || splitVector[0] == "server{")
                         && this->findBraciteRight == 0 && this->findBraciteLeft == 0)
                         checkValidServer(splitVector);
                     else if(splitVector[0] == "listen" && this->findBraciteRight == 1
@@ -285,10 +314,10 @@ void    ParseConfigeFile::parser(std::string nameFile)
                         checkValidLocation(splitVector);
                     // else
                     //     errorParse();
-                    }
-                    else
-                    {
-                        if(splitVector[0] == "root" && this->findBraciteRight == 1
+                    // }
+                    // else
+                    // {
+                    else if(splitVector[0] == "root" && this->findBraciteRight == 1
                         && this->findBraciteRightLocation == 1)
                         checkValidLocationRoot(splitVector);
                     else if(splitVector[0] == "alias" && this->findBraciteRight == 1
@@ -309,12 +338,21 @@ void    ParseConfigeFile::parser(std::string nameFile)
                     else if(splitVector[0] == "cgi_bin" && this->findBraciteRight == 1
                         && this->findBraciteRightLocation == 1)
                         checkValidLocationCgiBin(splitVector);
+                    else if(splitVector[0] == "return" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 1)
+                        checkValidLocationReturn(splitVector);
                     else if(splitVector[0] == "}" && this->findBraciteRight == 1
                         && this->findBraciteRightLocation == 1)
                         checkValidLocationLeftBrackite(splitVector);
-                    // else
-                    //     errorParse();
-                    }
+                    else if(splitVector[0] == "}" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 0)
+                        checkValidServerLeftBrackite(splitVector);
+                    else
+                        {
+                            std::cout << myVector_s[i] << std::endl;
+                            errorParse();
+                        }
+                    // }
                     
                 }
                 i++;

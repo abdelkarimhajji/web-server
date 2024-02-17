@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:41:14 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/17 15:08:58 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/17 15:45:11 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ class ParseConfigeFile
         void    checkValidLocationCgiBin(std::vector<std::string> splitVector);
         void    checkValidLocationReturn(std::vector<std::string> splitVector);
         void    checkValidLocationLeftBrackite(std::vector<std::string> splitVector);
+        void    checkValidServerLeftBrackite(std::vector<std::string> splitVector);
         void    errorParse();
     public:
         ParseConfigeFile();
