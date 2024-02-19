@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:11:43 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/19 19:21:58 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/19 19:32:21 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 DataConfige::DataConfige()
 {
-
+    this->autoIndex = 1;
 }
 
 void    DataConfige::errorData()
@@ -102,6 +102,14 @@ void    DataConfige::setLocationIndex(std::string index)
 std::string    DataConfige::getHost()
 {
     return this->host;
+}
+void    DataConfige::setAutoIndex(int autoIndex)
+{
+    this->autoIndex = autoIndex;
+}
+int    DataConfige::getAutoIndex()
+{
+    return this->autoIndex;
 }
 void    DataConfige::setHost(std::string host)
 {

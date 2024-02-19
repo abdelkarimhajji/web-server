@@ -15,7 +15,7 @@ server {
     # Define the root directory for serving files
     root /var/www/html
 
-    #autoindex on 
+    autoindex on
     # Define default file to serve
     index index.html
 

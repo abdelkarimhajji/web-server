@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/19 19:24:43 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/19 19:33:25 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,7 +285,14 @@ void    ParseConfigeFile::checkValidHost(std::vector<std::string> splitVector)
 void    ParseConfigeFile::checkValidAutoIndex(std::vector<std::string> splitVector)
 {
     if(splitVector.size() == 2)
-        this->data.back().setAutoIndex(splitVector[1]);
+    {
+        if(splitVector[1] == "off")
+            this->data.back().setAutoIndex(0);
+        else if(splitVector[1] == "on")
+            this->data.back().setAutoIndex(1);
+        else
+            errorParse();
+    }
     else
     {
         std::cout << "i check autoIndex " << std::endl;
