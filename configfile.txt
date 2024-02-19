@@ -5,12 +5,12 @@
 server {
 
     # Listen on port 80 for HTTP requests
-    listen 55 
+    listen 30 
     listen 90
 
     # Define the server's domain name
     server_name example.com
-     host 8.8.8.8
+    host 8.8.8.8;
     
     # Define the root directory for serving files
     root /var/www/html
@@ -48,25 +48,16 @@ server {
     }
     location /karim/ {
 
-        alias slm15d5
-        root slm2
-        index slm3
-        methods POST
-        autoindex off
-        cgi_extention   .dd
-        cgi_bin      dff   
-        return 305 /path/to/fffa
     
-    
-
 }
 }
 
 server {
 
     # Listen on port 80 for HTTP requests
-    listen 55 
+    listen 30 
     listen 90
+    
 
     # Define the server's domain name
     server_name example.com
@@ -122,3 +113,6 @@ server {
 
 }
 }
+
+
+

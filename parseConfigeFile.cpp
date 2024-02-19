@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/19 19:33:25 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/19 21:39:27 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void    ParseConfigeFile::checkValidListen(std::vector<std::string> splitVector)
             i++;
         }
         this->data.back().setListen(splitVector[1]);
-    }
+    }   
     else
     {
         std::cout << "i check listen" << std::endl;
