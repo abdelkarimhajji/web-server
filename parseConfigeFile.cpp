@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:55:15 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/17 15:47:29 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/19 19:24:43 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ void    ParseConfigeFile::checkValidServer(std::vector<std::string> splitVector)
     if ((splitVector[1] == "{" && splitVector.size() == 2)
         || (splitVector.size() == 1))
     {
-            this->findBraciteRight++;
+            this->findBraciteRight = 1;
+            this->findBraciteLeftLocation = 0;
+            this->findBraciteRightLocation = 0;
             DataConfige newConfig;
             data.push_back(newConfig);
     }
@@ -131,8 +133,14 @@ void    ParseConfigeFile::checkValidErrorPage(std::vector<std::string> splitVect
 
 void    ParseConfigeFile::checkValidLocation(std::vector<std::string> splitVector)
 {
+    if(this->findBraciteLeftLocation == 1 && this->findBraciteRightLocation == 1)
+    {
+        this->findBraciteLeftLocation = 0;
+        this->findBraciteRightLocation = 0;
+    }
     if(splitVector.size() == 3 && splitVector[2] == "{")
     {
+        
         this->data.back().setLocation(splitVector[1]);
         this->findBraciteRightLocation = 1;
     }
@@ -158,6 +166,7 @@ void    ParseConfigeFile::checkValidLocationRoot(std::vector<std::string> splitV
 
 void    ParseConfigeFile::checkValidLocationAlias(std::vector<std::string> splitVector)
 {
+
     if(splitVector.size() == 2)
     {
         this->data.back().setLocationAlias(splitVector[1]);
@@ -247,7 +256,6 @@ void    ParseConfigeFile::checkValidLocationLeftBrackite(std::vector<std::string
     if(splitVector.size() == 1)
     {
         this->findBraciteLeftLocation = 1;
-        this->findBraciteRightLocation = 0;
     }
     else
         errorParse();
@@ -258,10 +266,31 @@ void    ParseConfigeFile::checkValidServerLeftBrackite(std::vector<std::string> 
     if(splitVector.size() == 1)
     {
         this->findBraciteRight = 0;
-        this->findBraciteLeft = 1;
+        this->findBraciteLeft = 0;
     }
     else
         errorParse();
+}
+void    ParseConfigeFile::checkValidHost(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 2)
+        this->data.back().setHost(splitVector[1]);
+    else
+    {
+        std::cout << "i check host " << std::endl;
+        errorParse();
+    }
+}
+
+void    ParseConfigeFile::checkValidAutoIndex(std::vector<std::string> splitVector)
+{
+    if(splitVector.size() == 2)
+        this->data.back().setAutoIndex(splitVector[1]);
+    else
+    {
+        std::cout << "i check autoIndex " << std::endl;
+        errorParse();
+    }
 }
 
 void    ParseConfigeFile::parser(std::string nameFile)
@@ -280,20 +309,19 @@ void    ParseConfigeFile::parser(std::string nameFile)
             myVector_s.push_back(line);
         }
         // std::cout << myVector_s.back() << std::endl;
-        while (true)
-        {
+       
             i = 0;
             while (i < myVector_s.size())
             {
                 splitVector = split(myVector_s[i]);
                 if(!splitVector.empty() && splitVector[0] != "#" && splitVector[0][0] != '#')
                 {
-                    // if(this->findBraciteRightLocation == 0)
-                    // {
-                    
                     if((splitVector[0] == "server" || splitVector[0] == "server{")
-                        && this->findBraciteRight == 0 && this->findBraciteLeft == 0)
-                        checkValidServer(splitVector);
+                        && ((this->findBraciteRight == 0 && this->findBraciteLeft == 0)
+                        || (this->findBraciteRight == 1 && this->findBraciteLeft == 1)))
+                        {    
+                            checkValidServer(splitVector);
+                        }
                     else if(splitVector[0] == "listen" && this->findBraciteRight == 1
                         && this->findBraciteRightLocation == 0)
                         checkValidListen(splitVector);
@@ -306,17 +334,17 @@ void    ParseConfigeFile::parser(std::string nameFile)
                     else if(splitVector[0] == "index" && this->findBraciteRight == 1
                         && this->findBraciteRightLocation == 0)
                         checkValidIndex(splitVector);
+                    else if(splitVector[0] == "host" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 0)
+                        checkValidHost(splitVector);
+                    else if(splitVector[0] == "autoindex" && this->findBraciteRight == 1
+                        && this->findBraciteRightLocation == 0)
+                        checkValidAutoIndex(splitVector);
                     else if(splitVector[0] == "error_page" && this->findBraciteRight == 1
                         && this->findBraciteRightLocation == 0)
                         checkValidErrorPage(splitVector);
-                    else if(splitVector[0] == "location" && this->findBraciteRight == 1
-                        && this->findBraciteRightLocation == 0)
+                    else if(splitVector[0] == "location" && this->findBraciteRight == 1)
                         checkValidLocation(splitVector);
-                    // else
-                    //     errorParse();
-                    // }
-                    // else
-                    // {
                     else if(splitVector[0] == "root" && this->findBraciteRight == 1
                         && this->findBraciteRightLocation == 1)
                         checkValidLocationRoot(splitVector);
@@ -339,29 +367,36 @@ void    ParseConfigeFile::parser(std::string nameFile)
                         && this->findBraciteRightLocation == 1)
                         checkValidLocationCgiBin(splitVector);
                     else if(splitVector[0] == "return" && this->findBraciteRight == 1
-                        && this->findBraciteRightLocation == 1)
+                        && this->findBraciteRightLocation == 1){
+                           
                         checkValidLocationReturn(splitVector);
-                    else if(splitVector[0] == "}" && this->findBraciteRight == 1
-                        && this->findBraciteRightLocation == 1)
-                        checkValidLocationLeftBrackite(splitVector);
-                    else if(splitVector[0] == "}" && this->findBraciteRight == 1
-                        && this->findBraciteRightLocation == 0)
-                        checkValidServerLeftBrackite(splitVector);
-                    else
-                        {
-                            std::cout << myVector_s[i] << std::endl;
-                            errorParse();
                         }
-                    // }
-                    
+                    else if(splitVector[0] == "}" && this->findBraciteRight == 1 
+                        && this->findBraciteRightLocation == 1 && this->findBraciteLeftLocation == 0)
+                        {
+                            checkValidLocationLeftBrackite(splitVector);
+                            
+                        }
+                    else if(splitVector[0] == "}" && this->findBraciteRight == 1 && this->findBraciteLeft == 0)
+                    {
+                        checkValidServerLeftBrackite(splitVector);
+                    }
+                    else
+                    {
+                        std::cout << "i am here \n";
+                        std::cout << myVector_s[i] <<  std::endl;
+                        std::cout << this->findBraciteLeftLocation << std::endl;  
+                        std::cout << this->findBraciteRightLocation << std::endl; 
+                        std::cout << this->findBraciteLeft << std::endl;  
+                        std::cout << this->findBraciteRight << std::endl;                        
+                        errorParse(); 
+                    }
                 }
+                
                 i++;
             }
-            std::cout << data[0].getErrorPage()[0].error << std::endl;
-            std::cout << data[0].getErrorPage()[0].page << std::endl;
-            // std::cout << data[1].getListen()[1] << std::endl;
-           exit(0);
-        }
+            if(this->findBraciteLeft != 0 || this->findBraciteRight != 0)
+                errorParse();
     }
     else 
         std::cout << "error happen with this file" << std::endl;

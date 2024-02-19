@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:11:43 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/17 13:46:55 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/19 19:21:58 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,14 @@ void    DataConfige::setLocationIndex(std::string index)
     this->vectorLocation.back().index = index;
 }
 
+std::string    DataConfige::getHost()
+{
+    return this->host;
+}
+void    DataConfige::setHost(std::string host)
+{
+    this->host = host;
+}
 void    DataConfige::setLocationMethods(std::string method1, std::string method2, std::string method3)
 {
     if(!method1.empty() && method1 == "GET")

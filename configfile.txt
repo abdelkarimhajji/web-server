@@ -2,7 +2,7 @@
 
 # Set the server's default behavior
                 
-server{
+server {
 
     # Listen on port 80 for HTTP requests
     listen 55 
@@ -10,8 +10,8 @@ server{
 
     # Define the server's domain name
     server_name example.com
-    # HOST 8.8.8.8
-
+     host 8.8.8.8
+    
     # Define the root directory for serving files
     root /var/www/html
 
@@ -33,5 +33,92 @@ server{
         cgi_bin      dd   
         return 303 /path/to/blala
     }
+
+    location /slm/ {
+
+        alias karimslm
+        root slm2
+        index slm3
+        methods POST
+        autoindex off
+        cgi_extention   .dd
+        cgi_bin      dff   
+        return 305 /path/to/fffa
+    
+    }
+    location /karim/ {
+
+        alias slm15d5
+        root slm2
+        index slm3
+        methods POST
+        autoindex off
+        cgi_extention   .dd
+        cgi_bin      dff   
+        return 305 /path/to/fffa
+    
+    
+
+}
 }
 
+server {
+
+    # Listen on port 80 for HTTP requests
+    listen 55 
+    listen 90
+
+    # Define the server's domain name
+    server_name example.com
+    # HOST 8.8.8.8
+    
+    # Define the root directory for serving files
+    root /var/www/html
+
+    #autoindex on 
+    # Define default file to serve
+    index karim.htlm
+
+    # Configure error pages
+    error_page 404 /404.html
+
+    # Define location of static files
+    location /nassim/ {
+        alias /var/www/static/
+        root /var/www/static/
+        index statuc.html
+        methods GET
+        autoindex on
+        cgi_extention   .py
+        cgi_bin      dd   
+        return 303 /path/to/blala
+    }
+
+    location /somaya/ {
+
+        alias karimslm
+        root slm2
+        index slm3
+        methods POST
+        autoindex off
+        cgi_extention   .dd
+        cgi_bin      dff   
+        return 305 /path/to/fffa
+    
+    }
+    location /kahrlid/ {
+
+        alias slm15d5
+        root slm2
+        index slm3
+        methods POST
+        autoindex off
+        cgi_extention   .dd
+        cgi_bin      dff   
+        return 305 /path/to/fffa
+    
+    
+
+
+}
+}

@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 10:42:31 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/17 13:46:05 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/19 19:20:31 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ class DataConfige
         std::vector<std::string> serverName;
         std::string root;
         std::string index;
+        std::string host;
         std::vector<EroorPage> errorPage;
         std::vector<Location> vectorLocation;
 
@@ -84,6 +85,8 @@ class DataConfige
         void    setIndex(std::string index);
         std::vector<EroorPage>    getErrorPage();
         void    setErrorPage(std::string error, std::string page);
+        std::string    getHost();
+        void    setHost(std::string index);
         std::vector<Location>    getLocation();
         void    setLocation(std::string _location);
         void    setLocationRoot(std::string root);
@@ -94,6 +97,7 @@ class DataConfige
         void    setLocationCgiExtention(std::string cgiExtention);
         void    setLocationCgiBin(std::string cgiBin);
         void    setLocationReturn(std::string returnStatus, std::string returnPath);
+        
         void    errorData();
 };
 
