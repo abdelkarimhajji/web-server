@@ -24,18 +24,15 @@ server
 
     # Define location of static files
     location /static/ {
-        alias /var/www/static/
+        #alias /var/www/static/
         root /var/www/static/
         index statuc.html
         methods GET POST
         autoindex 
         cgi_extention   .py
-        cgi_bin         
-        return 303 /path/to/blala
+        cgi_bin
+        return 301 /path/to/blala
         
-
-
-
     }
 
     # Define location of dynamic application

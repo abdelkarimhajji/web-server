@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:10:08 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/15 10:36:32 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/21 13:42:03 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 
 
+
 int main(void)
 {
-    ParseConfigeFile parse;
+ParseConfigeFile parse;
+    // parse.parser("configfile.txt");
+    // ParseConfigeFile parse;
 
-    parse.parser("configfile.txt");
+    // parse.parser("configfile.txt");
 
     return 0;
 }
