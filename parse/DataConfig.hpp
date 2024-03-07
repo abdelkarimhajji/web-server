@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DataConfige.hpp                                    :+:      :+:    :+:   */
+/*   DataConfig.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 10:42:31 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/19 19:31:03 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/23 20:35:59 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <string>
 #include <sstream>
 
-struct EroorPage
+struct ErrorPage
 {
     std::string error;
     std::string page;
@@ -62,7 +62,7 @@ struct Location
     }
 };
 
-class DataConfige
+class DataConfig
 {
     private:
         std::vector<std::string> listen;
@@ -71,20 +71,20 @@ class DataConfige
         std::string index;
         std::string host;
         int autoIndex;
-        std::vector<EroorPage> errorPage;
+        std::vector<ErrorPage> errorPage;
         std::vector<Location> vectorLocation;
 
     public:
-        DataConfige();
+        DataConfig();
         std::vector<std::string>    getListen();
         void    setListen(std::string listen);
         std::vector<std::string>    getServerName();
         void    setServerName(std::string serverName);
         std::string    getRoot();
-        void    setRoot(std::string index);
+        void    setRoot(std::string root);
         std::string    getIndex();
         void    setIndex(std::string index);
-        std::vector<EroorPage>    getErrorPage();
+        std::vector<ErrorPage>    getErrorPage();
         void    setErrorPage(std::string error, std::string page);
         std::string    getHost();
         void    setHost(std::string host);

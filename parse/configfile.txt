@@ -5,15 +5,15 @@
 server {
 
     # Listen on port 80 for HTTP requests
-    listen 30 
-    listen 90
+    listen 8081
+    listen 8082
 
     # Define the server's domain name
     server_name example.com
-    host 8.8.8.8;
+    host localhost
     
     # Define the root directory for serving files
-    root /var/www/html
+    root /var/www/html/
 
     autoindex on
     # Define default file to serve
@@ -23,21 +23,108 @@ server {
     error_page 404 /404.html
 
     # Define location of static files
+    location /image/ {
+        
+        root /var/www/static/
+        index index.html
+        methods GET
+        autoindex on
+        cgi_extention   .py
+        cgi_bin      dd   
+        return 303 /path/to/blala
+    }
+
+    location /junk/ {
+
+        
+        root slm2
+        index slm3
+        methods POST
+        autoindex off
+        cgi_extention   .dd
+        cgi_bin      dff   
+        return 305 /path/to/fffa
+    
+    }
+    location /karim/ {
+
+    
+}
+}
+
+server {
+
+    # Listen on port 80 for HTTP requests
+    listen 8085
+
+    # Define the server's domain name
+    server_name example.com
+    host 127.0.0.1
+    
+    # Define the root directory for serving files
+    root /var/www/html
+
+    autoindex on
+    # Define default file to serve
+    index index2.html
+
+    # Configure error pages
+    error_page 404 /404.html
+
+    # Define location of static files
     location /static/ {
-        #alias /var/www/static/
+        alias /var/www/static/
         root /var/www/static/
         index statuc.html
         methods GET
         autoindex on
         cgi_extention   .py
-<<<<<<< HEAD
-        cgi_bin
-        return 301 /path/to/blala
-        
-=======
         cgi_bin      dd   
         return 303 /path/to/blala
->>>>>>> 579ca5d4ba45c0eedff478fed817ae4dc1bb5695
+    }
+
+    location /slm/ {
+
+        alias karimslm
+        root slm2
+        index slm3
+        methods POST
+        autoindex off
+        cgi_extention   .dd
+        cgi_bin      dff   
+        return 305 /path/to/fffa
+    
+    }
+}
+server {
+
+    # Listen on port 80 for HTTP requests
+    listen 8086
+
+    # Define the server's domain name
+    server_name example.com
+    host 127.0.0.1
+    
+    # Define the root directory for serving files
+    root /var/www/html
+
+    autoindex on
+    # Define default file to serve
+    index mourad.html
+
+    # Configure error pages
+    error_page 404 /404.html
+
+    # Define location of static files
+    location /static/ {
+        alias /var/www/static/
+        root /var/www/static/
+        index statuc.html
+        methods GET
+        autoindex on
+        cgi_extention   .py
+        cgi_bin      dd   
+        return 303 /path/to/blala
     }
 
     location /slm/ {
@@ -57,68 +144,3 @@ server {
     
 }
 }
-
-server {
-
-    # Listen on port 80 for HTTP requests
-    listen 30 
-    listen 90
-    
-
-    # Define the server's domain name
-    server_name example.com
-    # HOST 8.8.8.8
-    
-    # Define the root directory for serving files
-    root /var/www/html
-
-    #autoindex on 
-    # Define default file to serve
-    index karim.htlm
-
-    # Configure error pages
-    error_page 404 /404.html
-
-    # Define location of static files
-    location /nassim/ {
-        alias /var/www/static/
-        root /var/www/static/
-        index statuc.html
-        methods GET
-        autoindex on
-        cgi_extention   .py
-        cgi_bin      dd   
-        return 303 /path/to/blala
-    }
-
-    location /somaya/ {
-
-        alias karimslm
-        root slm2
-        index slm3
-        methods POST
-        autoindex off
-        cgi_extention   .dd
-        cgi_bin      dff   
-        return 305 /path/to/fffa
-    
-    }
-    location /kahrlid/ {
-
-        alias slm15d5
-        root slm2
-        index slm3
-        methods POST
-        autoindex off
-        cgi_extention   .dd
-        cgi_bin      dff   
-        return 305 /path/to/fffa
-    
-    
-
-
-}
-}
-
-
-

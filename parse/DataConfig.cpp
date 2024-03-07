@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DataConfige.cpp                                    :+:      :+:    :+:   */
+/*   DataConfig.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,112 +10,112 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DataConfige.hpp"
+#include "DataConfig.hpp"
 
-DataConfige::DataConfige()
+DataConfig::DataConfig()
 {
     this->autoIndex = 1;
 }
 
-void    DataConfige::errorData()
+void    DataConfig::errorData()
 {
     std::cout << "error in parse data" << std::endl;
 }
 
-void    DataConfige::setListen(std::string listen)
+void    DataConfig::setListen(std::string listen)
 {
     this->listen.push_back(listen);
 }
-std::vector<std::string>    DataConfige::getListen()
+std::vector<std::string>    DataConfig::getListen()
 {
     return this->listen;
 }
 
-std::vector<std::string>    DataConfige::getServerName()
+std::vector<std::string>    DataConfig::getServerName()
 {
     return this->serverName;
 }
-void    DataConfige::setServerName(std::string serverName)
+void    DataConfig::setServerName(std::string serverName)
 {
     this->serverName.push_back(serverName);
 }
 
-std::string    DataConfige::getRoot()
+std::string    DataConfig::getRoot()
 {
     return this->root;
 }
 
-void    DataConfige::setRoot(std::string root)
+void    DataConfig::setRoot(std::string root)
 {
     this->root = root;
 }
 
-std::string    DataConfige::getIndex()
+std::string    DataConfig::getIndex()
 {
     return this->index;
 }
 
-void    DataConfige::setIndex(std::string index)
+void    DataConfig::setIndex(std::string index)
 {
     this->index = index;
 }
 
-std::vector<EroorPage> DataConfige::getErrorPage()
+std::vector<ErrorPage> DataConfig::getErrorPage()
 {
     return this->errorPage;
 }
 
-void    DataConfige::setErrorPage(std::string error, std::string page)
+void    DataConfig::setErrorPage(std::string error, std::string page)
 {
-    EroorPage newErrorPage;
+    ErrorPage newErrorPage;
     newErrorPage.error = error;
     newErrorPage.page = page;
     this->errorPage.push_back(newErrorPage);
 }
 
-std::vector<Location>    DataConfige::getLocation()
+std::vector<Location>    DataConfig::getLocation()
 {
     return this->vectorLocation;
 }
-void    DataConfige::setLocation(std::string _location)
+void    DataConfig::setLocation(std::string _location)
 {
     Location location;
 
     location.location = _location;
     this->vectorLocation.push_back(location);
 }
-void    DataConfige::setLocationRoot(std::string root)
+void    DataConfig::setLocationRoot(std::string root)
 {
     this->vectorLocation.back().root = root;
 }
 
-void    DataConfige::setLocationAlias(std::string alias)
+void    DataConfig::setLocationAlias(std::string alias)
 {
     this->vectorLocation.back().alias = alias;
 }
 
-void    DataConfige::setLocationIndex(std::string index)
+void    DataConfig::setLocationIndex(std::string index)
 {
     this->vectorLocation.back().index = index;
 }
 
-std::string    DataConfige::getHost()
+std::string    DataConfig::getHost()
 {
     return this->host;
 }
-void    DataConfige::setAutoIndex(int autoIndex)
+void    DataConfig::setAutoIndex(int autoIndex)
 {
     this->autoIndex = autoIndex;
 }
-int    DataConfige::getAutoIndex()
+int    DataConfig::getAutoIndex()
 {
     return this->autoIndex;
 }
-void    DataConfige::setHost(std::string host)
+void    DataConfig::setHost(std::string host)
 {
     this->host = host;
 }
-void    DataConfige::setLocationMethods(std::string method1, std::string method2, std::string method3)
+void    DataConfig::setLocationMethods(std::string method1, std::string method2, std::string method3)
 {
     if(!method1.empty() && method1 == "GET")
         this->vectorLocation.back().methods.get = 1;
@@ -143,7 +143,7 @@ void    DataConfige::setLocationMethods(std::string method1, std::string method2
         errorData();
 }
 
-void    DataConfige::setLocationAutoIndex(std::string autoIndex)
+void    DataConfig::setLocationAutoIndex(std::string autoIndex)
 {
     if(autoIndex == "off")
         this->vectorLocation.back().autoIndex = 0;
@@ -153,17 +153,17 @@ void    DataConfige::setLocationAutoIndex(std::string autoIndex)
         errorData();
 }
 
-void    DataConfige::setLocationCgiExtention(std::string cgiExtention)
+void    DataConfig::setLocationCgiExtention(std::string cgiExtention)
 {
     this->vectorLocation.back().cgiExtension = cgiExtention;
 }
 
-void    DataConfige::setLocationCgiBin(std::string cgiBin)
+void    DataConfig::setLocationCgiBin(std::string cgiBin)
 {
     this->vectorLocation.back().cgiBin = cgiBin;
 }
 
-void    DataConfige::setLocationReturn(std::string returnStatus, std::string returnPath)
+void    DataConfig::setLocationReturn(std::string returnStatus, std::string returnPath)
 {
     this->vectorLocation.back()._return.status = returnStatus;
     this->vectorLocation.back()._return.status = returnPath;

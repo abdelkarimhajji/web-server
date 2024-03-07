@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parseConfigeFile.hpp                               :+:      :+:    :+:   */
+/*   ParseConfigFile.hpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:41:14 by ahajji            #+#    #+#             */
-/*   Updated: 2024/02/19 19:23:34 by ahajji           ###   ########.fr       */
+/*   Updated: 2024/02/23 20:39:50 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include "DataConfige.hpp"
+#include "DataConfig.hpp"
 
-class ParseConfigeFile
+class ParseConfigFile
 {
     private:
         int findBraciteRight;
         int findBraciteLeft;
         int findBraciteRightLocation;
         int findBraciteLeftLocation;
-        std::vector<DataConfige> data;
+        std::vector<DataConfig> data;
         std::vector<std::string>     split(std::string str);
         void    checkValidServer(std::vector<std::string> splitVector);
         void    checkValidListen(std::vector<std::string> splitVector);
@@ -50,8 +50,9 @@ class ParseConfigeFile
         void    checkValidAutoIndex(std::vector<std::string> splitVector);
         void    errorParse();
     public:
-        ParseConfigeFile();
+        ParseConfigFile();
         void    parser(std::string nameFile);
+        std::vector<DataConfig> getData();
 };
 
 #endif
