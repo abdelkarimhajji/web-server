@@ -194,6 +194,12 @@ Response Request::handleRequest(DataConfig config) {
     buildPath(config);
     std::cout << "path is " << path << std::endl;
     Response response;
+    std::cout << "requestEntity" << this->requestEntity << "\n";
+    std::cout << "requestMethod" << this->requestMethod << "\n";
+    std::cout << "requestRessource" << this->requestRessource << "\n";
+    std::cout << "httpVersion" << this->httpVersion << "\n";
+    std::cout << "path" << this->path << "\n";
+    std::cout << "body" << this->body << "\n";
     // if(this->requestMethod == "POST")
     // {
     //     std::cout << "POST\n";
